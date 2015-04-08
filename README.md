@@ -5,6 +5,4 @@ Qt 5.4
 
 Build
 --------
-qmake
-make
-./buttonAlert
+qmake && make && ./buttonAlert
