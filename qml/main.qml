@@ -7,10 +7,6 @@ import QtQuick.Controls 1.3
 {"type": "ticking", "payload": {"participants_text": "620,810", "tick_mac": "ed293d6957c75ce3a11a41ee49c1fdf7b2c034ff", "seconds_left": 57.0, "now_str": "2015-04-06-16-46-30"}}
 */
 
-/*
-        url: "wss://wss.redditmedia.com/thebutton?h=91bd1f9cbc4913dfd9e145029095293c9a482b57&e=1428409783"
-*/
-
 Rectangle {
     id: root
     width: 200
@@ -159,7 +155,7 @@ Rectangle {
     }
     SoundEffect {
         id: audio10Mark
-        source: "../audio/10s.wav"
+        source: "../audio/10mark.wav"
     }
     SoundEffect {
         id: newLow
