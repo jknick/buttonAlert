@@ -23,13 +23,11 @@ Rectangle {
         id: socket
 
         url: "wss://wss.redditmedia.com/thebutton?h=eed0ca06fe84db967651236fcf38846ee813dd61&e=1428591465"
+
         onTextMessageReceived: {
             var packet = JSON.parse(message)
             messageBox.text = packet.payload.seconds_left
-
             var curr = packet.payload.seconds_left
-
-
             participantCount = packet.payload.participants_text
 
             if(curr < lastMin) {
@@ -54,19 +52,18 @@ Rectangle {
                 }
 
             }
-            
-            ///* Record complete message */
+            /* Record complete message */
             //fileio.write("/var/tmp/button-data-total.txt", message)
 
             if(curr > 51) {
                 root.color = "#820080"
-            } else if(curr <= 51 && curr > 41) {
+            } else if(curr > 41) {
                 root.color = "#0083C7"
-            } else if(curr <= 41 && curr > 31) {
+            } else if(curr > 31) {
                 root.color = "#02be01"
-            } else if(curr <= 31 && curr > 21) {
+            } else if(curr > 21) {
                 root.color = "#E5D900"
-            } else if(curr <= 21 && curr > 11) {
+            } else if(curr > 11) {
                 root.color = "#e59500"
             } else if(curr <= 11) {
                 root.color = "red"
@@ -85,7 +82,6 @@ Rectangle {
             }
 
             last = curr
-
         }
 
         onStatusChanged: {
@@ -108,7 +104,6 @@ Rectangle {
         anchors.top: parent.top
         anchors.horizontalCenter: root.horizontalCenter
     }
-
     Text {
         id: currMinBox
         font.family: "Helvetica"
