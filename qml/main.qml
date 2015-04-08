@@ -26,8 +26,9 @@ Rectangle {
 
         onTextMessageReceived: {
             var packet = JSON.parse(message)
-            messageBox.text = packet.payload.seconds_left
             var curr = packet.payload.seconds_left
+
+            messageBox.text = curr
             participantCount = packet.payload.participants_text
 
             if(curr < lastMin) {
@@ -46,6 +47,7 @@ Rectangle {
                 //              +  packet.payload.now_str
                 //            );
 
+                audio10Mark.stop()
                 if(lastMin < currMin) {
                     currMin = lastMin
                     newLow.play()
@@ -67,6 +69,8 @@ Rectangle {
                 root.color = "#e59500"
             } else if(curr <= 11) {
                 root.color = "red"
+                if(audio10Mark.playing != true)
+                    audio10Mark.play()
             }
 
             if(curr == 51 && threshold > 4) {
@@ -78,7 +82,7 @@ Rectangle {
             } else if(curr == 21 && threshhold > 1) {
                 audio20Mark.play()
             } else if(curr == 11 && threshhold > 0) {
-                audio10Mark.play()
+                //audio10Mark.play()
             }
 
             last = curr
@@ -151,6 +155,7 @@ Rectangle {
     SoundEffect {
         id: audio10Mark
         source: "../audio/10mark.wav"
+        loops: SoundEffect.Infinite
     }
     SoundEffect {
         id: newLow
