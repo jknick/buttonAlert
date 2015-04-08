@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>audio/10mark.wav</file>
+        <file>audio/20mark.wav</file>
+        <file>audio/30mark.wav</file>
+        <file>audio/40mark.wav</file>
+        <file>audio/50mark.wav</file>
+        <file>audio/new_low.wav</file>
+    </qresource>
+</RCC>
