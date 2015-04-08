@@ -155,5 +155,6 @@ Rectangle {
     SoundEffect {
         id: newLow
         source: "../audio/new_low.wav"
+        volume: 0.4
     }
 }
