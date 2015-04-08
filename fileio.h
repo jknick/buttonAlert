@@ -16,7 +16,7 @@ public slots:
             return false;
 
         QFile file(source);
-        if (!file.open(QFile::Append | QFile::Truncate))
+        if (!file.open(QFile::Append))
             return false;
 
         QTextStream out(&file);
