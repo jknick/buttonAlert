@@ -22,7 +22,7 @@ Rectangle {
     WebSocket {
         id: socket
 
-        url: "wss://wss.redditmedia.com/thebutton?h=eed0ca06fe84db967651236fcf38846ee813dd61&e=1428591465"
+        url: "wss://wss.redditmedia.com/thebutton?h=7ec37ab53b1b022236c71b2f9d1f66c79b35e58f&e=1428765912"
 
         onTextMessageReceived: {
             var packet = JSON.parse(message)
