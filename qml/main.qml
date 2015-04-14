@@ -10,7 +10,7 @@ import QtQuick.Controls 1.3
 Rectangle {
     id: root
     width: 200
-    height: 250
+    height: 300
     color: "purple"
 
     property var currMin: 60
@@ -19,10 +19,12 @@ Rectangle {
     property var last: 0
     property var threshold: 5
 
+    property string pTime
+
     WebSocket {
         id: socket
 
-        url: "wss://wss.redditmedia.com/thebutton?h=0eb96bc7ae10e5dec1094fdc8350ac54d79c0de8&e=1429025526"
+        url: "wss://wss.redditmedia.com/thebutton?h=8fd133b899c19359fbca6af14e49eb54d6814fa4&e=1429112508"
 
         onTextMessageReceived: {
             var packet = JSON.parse(message)
@@ -50,6 +52,7 @@ Rectangle {
                 audio10Mark.stop()
                 if(lastMin < currMin) {
                     currMin = lastMin
+                    pTime = new Date().toLocaleTimeString()
                     newLow.play()
                 }
 
@@ -118,12 +121,21 @@ Rectangle {
         anchors.horizontalCenter: root.horizontalCenter
     }
     Text {
+        id: pTimeBox
+        font.family: "Helvetica"
+        font.pointSize: 16
+        text: pTime
+        anchors.topMargin: 10
+        anchors.top: currMinBox.bottom
+        anchors.horizontalCenter: root.horizontalCenter
+    }
+    Text {
         id: participantBox
         font.family: "Helvetica"
         font.pointSize: 16
         text: participantCount
         anchors.topMargin: 10
-        anchors.top: currMinBox.bottom
+        anchors.top: pTimeBox.bottom
         anchors.horizontalCenter: root.horizontalCenter
     }
     ComboBox {
